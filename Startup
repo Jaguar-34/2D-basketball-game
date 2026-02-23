@@ -1,0 +1,21 @@
+def start_screen(screen, width, height):
+    font = pygame.font.SysFont(None, 60)
+    small_font = pygame.font.SysFont(None, 40)
+    title_text = font.render("2D Basketball Game", True, (0, 0, 0))
+    instruction_text = small_font.render("Press SPACE to start", True, (0, 0, 0))
+
+    waiting = True
+    while waiting:
+        screen.fill((255, 255, 255))  # White background
+        screen.blit(title_text, (width//2 - title_text.get_width()//2, height//3))
+        screen.blit(instruction_text, (width//2 - instruction_text.get_width()//2, height//2))
+
+        pygame.display.flip()
+
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                exit()
+            elif event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_SPACE:  # Start on SPACE
+                    waiting = False
